@@ -9,8 +9,9 @@ export default class Controller {
         this.dataService.getData("poets", this.megjelenit)
     }
 
-    megjelenit(){
-        new UrlapView()
-        new TablaView()
+    megjelenit(lista){
+        //new UrlapView()
+        
+        new TablaView(lista, $(".tablazat"))
     }
 }

@@ -1,12 +1,12 @@
 export default class DataService {
   constructor() {
-    axios.defaults.baseURL = "http://localhost:8000/api/poets/";
+    axios.defaults.baseURL = "http://localhost:8000/api/";
   }
 
   async getData(uri, callback) {
     try {
       const response = await axios.get(uri);
-      callback(response);
+      callback(response.data);
     } catch (error) {
       console.log(error);
     }
