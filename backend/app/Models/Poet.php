@@ -9,7 +9,6 @@ class Poet extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'poet_id';
     protected $fillable = [
         'name',
         'birth_year',

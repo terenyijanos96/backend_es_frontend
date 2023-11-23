@@ -8,14 +8,18 @@ export default class Controller {
 
         this.dataService.getData("poets", this.megjelenit)
 
+        $(window).on("sorLetrehozas", (event)=>{
+            console.log(event.detail)
+            this.dataService.postData("poets", event.detail)
+        })
+
         $(window).on("sorTorles", (event)=>{
-            console.log(event.detail.id)
             this.dataService.deleteData("poets", event.detail.id) 
         })
     }
 
     megjelenit(lista){
-        //new UrlapView()
+        new UrlapView($(".urlap"))
         
         new TablaView(lista, $(".tablazat"))
     }

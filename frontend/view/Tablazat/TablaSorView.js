@@ -4,12 +4,9 @@ export default class TablaSorView {
   #szuloElem;
   #obj;
   #torlesGomb;
-  #id
   constructor(szuloElem, obj) {
     this.#szuloElem = szuloElem;
     this.#obj = obj;
-
-    this.#id = this.#obj["poet_id"]
 
     this.#htmlLetrehoz();
 
@@ -29,6 +26,7 @@ export default class TablaSorView {
         ikonClassok: ["bi", "bi-trash-fill"],
         szoveg: "Törlés",
       },
+      
     ];
 
     for (const key in this.#obj) {
@@ -55,12 +53,12 @@ export default class TablaSorView {
     this.#szuloElem.append(`<tr>${html_tartalom}</tr>`);
   }
 
-  getIndex(){
-    return this.#id
+  getId(){
+    return this.#obj.id
   }
 
   #esemenyLetrehozo(esemenynev) {
-    const esemenyem = new CustomEvent(esemenynev, { detail: { id: this.getIndex()} });
+    const esemenyem = new CustomEvent(esemenynev, { detail: { id: this.getId()} });
     window.dispatchEvent(esemenyem);
   }
 }
