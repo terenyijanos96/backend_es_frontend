@@ -3,22 +3,30 @@ import { fejlec } from "./fejlecek.js";
 export default class TablaSorView {
   #szuloElem;
   #obj;
-  #torlesGomb
+  #torlesGomb;
+  #id
   constructor(szuloElem, obj) {
     this.#szuloElem = szuloElem;
     this.#obj = obj;
 
+    this.#id = this.#obj["poet_id"]
+
     this.#htmlLetrehoz();
 
-    this.#torlesGomb = $(".torles-gomb")
+    this.#torlesGomb = $(".torles-gomb:last");
+
+    this.#torlesGomb.click((event) => {
+      event.preventDefault();
+      this.#esemenyLetrehozo("sorTorles");
+    });
   }
 
   #htmlLetrehoz() {
     let html_tartalom = "";
     let gombObjLista = [
       {
-        gombClassok : ["btn", "btn-outline-danger", "torles-gomb"],
-        ikonClassok : ["bi", "bi-trash-fill"],
+        gombClassok: ["btn", "btn-outline-danger", "torles-gomb"],
+        ikonClassok: ["bi", "bi-trash-fill"],
         szoveg: "Törlés",
       },
     ];
@@ -45,5 +53,14 @@ export default class TablaSorView {
     });
 
     this.#szuloElem.append(`<tr>${html_tartalom}</tr>`);
+  }
+
+  getIndex(){
+    return this.#id
+  }
+
+  #esemenyLetrehozo(esemenynev) {
+    const esemenyem = new CustomEvent(esemenynev, { detail: { id: this.getIndex()} });
+    window.dispatchEvent(esemenyem);
   }
 }

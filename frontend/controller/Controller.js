@@ -7,6 +7,11 @@ export default class Controller {
         this.dataService = new DataService
 
         this.dataService.getData("poets", this.megjelenit)
+
+        $(window).on("sorTorles", (event)=>{
+            console.log(event.detail.id)
+            this.dataService.deleteData("poets", event.detail.id) 
+        })
     }
 
     megjelenit(lista){
