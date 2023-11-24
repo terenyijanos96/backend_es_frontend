@@ -9,7 +9,7 @@ export default class UrlapView {
 
     this.inputAdatokLekerese();
 
-    $("form").submit((event) => {
+    $(".urlap form").submit((event) => {
       event.preventDefault();
       this.#esemenyLetrehozo("sorLetrehozas");
     });

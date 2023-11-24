@@ -1,25 +1,46 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  width: 80%;
+}
 
 header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 4rem;
-    font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 4rem;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .tablazat {
-    display: flex;
-    justify-content: center;
-}
-
-.tablazat table {
-    width: 80%;
+  display: flex;
+  justify-content: center;
 }
 
 footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+    height: inherit;
+    padding: 0;
+    height: inherit;
+    width: 100%;
+}
+
+input:disabled {
+    color: black;
+    border: 0;
+    background: transparent;
 }

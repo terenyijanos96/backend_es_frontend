@@ -4,17 +4,27 @@ export default class TablaSorView {
   #szuloElem;
   #obj;
   #torlesGomb;
+  #modositasGomb;
+  #modosithato_e
   constructor(szuloElem, obj) {
     this.#szuloElem = szuloElem;
     this.#obj = obj;
+    this.#modosithato_e = false
 
     this.#htmlLetrehoz();
 
     this.#torlesGomb = $(".torles-gomb:last");
+    this.#modositasGomb = $(".torles-gomb:last");
 
     this.#torlesGomb.click((event) => {
       event.preventDefault();
       this.#esemenyLetrehozo("sorTorles");
+    });
+
+    this.#modositasGomb.click((event) => {
+      event.preventDefault();
+      $()
+      this.#esemenyLetrehozo("sorModositas");
     });
   }
 
@@ -26,14 +36,18 @@ export default class TablaSorView {
         ikonClassok: ["bi", "bi-trash-fill"],
         szoveg: "Törlés",
       },
-      
+      {
+        gombClassok: ["btn", "btn-outline-primary", "modositas-gomb"],
+        ikonClassok: ["bi", "bi-pencil-square"],
+        szoveg: "Módosítás",
+      },
     ];
 
     for (const key in this.#obj) {
       if (key in fejlec) {
         html_tartalom += `
             <td>
-                ${this.#obj[key]}
+                <input type="text" name="" id="" value="${this.#obj[key]}" disabled="${this.getModosithato_e}">
             </td>
         `;
       }
@@ -53,12 +67,22 @@ export default class TablaSorView {
     this.#szuloElem.append(`<tr>${html_tartalom}</tr>`);
   }
 
-  getId(){
-    return this.#obj.id
+  getId() {
+    return this.#obj.id;
+  }
+
+  getModosithato_e(){
+    return this.#modosithato_e
+  }
+
+  modosithatosagAllitasa(){
+    this.#modosithato_e = !this.#modosithato_e
   }
 
   #esemenyLetrehozo(esemenynev) {
-    const esemenyem = new CustomEvent(esemenynev, { detail: { id: this.getId()} });
+    const esemenyem = new CustomEvent(esemenynev, {
+      detail: { id: this.getId() },
+    });
     window.dispatchEvent(esemenyem);
   }
 }
