@@ -45,7 +45,7 @@ export default class TablaSorView {
       if (key in this.#fejlec) {
         html_tartalom += `
             <td>
-                <input type="text" name="" id="" value="${this.#obj[key]}" disabled="${this.getModosithato_e}">
+                <input type="text" name="" id="" value="${this.#obj[key]}" ${this.getModosithato_e() ? "" : "disabled"}>
             </td>
         `;
       }
