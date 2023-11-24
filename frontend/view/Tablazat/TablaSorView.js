@@ -1,16 +1,15 @@
-import { fejlec } from "./fejlecek.js";
-
 export default class TablaSorView {
   #szuloElem;
   #obj;
   #torlesGomb;
+  #fejlec
   #modositasGomb;
   #modosithato_e
-  constructor(szuloElem, obj) {
+  constructor(szuloElem, obj, fejlec) {
     this.#szuloElem = szuloElem;
     this.#obj = obj;
     this.#modosithato_e = false
-
+    this.#fejlec = fejlec
     this.#htmlLetrehoz();
 
     this.#torlesGomb = $(".torles-gomb:last");
@@ -23,7 +22,6 @@ export default class TablaSorView {
 
     this.#modositasGomb.click((event) => {
       event.preventDefault();
-      $()
       this.#esemenyLetrehozo("sorModositas");
     });
   }
@@ -44,7 +42,7 @@ export default class TablaSorView {
     ];
 
     for (const key in this.#obj) {
-      if (key in fejlec) {
+      if (key in this.#fejlec) {
         html_tartalom += `
             <td>
                 <input type="text" name="" id="" value="${this.#obj[key]}" disabled="${this.getModosithato_e}">

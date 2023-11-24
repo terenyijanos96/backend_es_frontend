@@ -1,6 +1,8 @@
 import TablaFejlecView from "./TablaFejlecView.js";
 import TablaSorView from "./TablaSorView.js";
 
+import { fejlec } from "../fejlecek.js";
+
 export default class TablaView {
   #szuloElem;
   #thead;
@@ -27,10 +29,10 @@ export default class TablaView {
   }
 
   sorLetrehozo() {
-    new TablaFejlecView(this.#thead);
+    new TablaFejlecView(this.#thead, fejlec);
 
     this.lista.forEach((obj) => {
-      new TablaSorView(this.#tbody, obj);
+      new TablaSorView(this.#tbody, obj, fejlec);
     });
   }
 }

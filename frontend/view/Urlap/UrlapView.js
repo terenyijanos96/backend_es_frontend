@@ -1,4 +1,4 @@
-import { fejlec } from "../Tablazat/fejlecek.js";
+import { fejlec } from "../fejlecek.js";
 
 export default class UrlapView {
   #szuloElem;

@@ -1,12 +1,11 @@
-import { fejlec } from "./fejlecek.js"
 
 export default class TablaFejlecView {
 
     #szuloElem
-    #obj 
-    constructor(szuloElem, obj){
+    #fejlec
+    constructor(szuloElem, fejlec){
         this.#szuloElem = szuloElem
-        this.#obj = fejlec
+        this.#fejlec = fejlec
 
         this.#htmlLetrehoz()
     }
@@ -14,10 +13,10 @@ export default class TablaFejlecView {
     #htmlLetrehoz(){
         let html_tartalom = ""
 
-        for (const key in this.#obj) {
+        for (const key in this.#fejlec) {
             html_tartalom += `
                 <th>
-                    ${this.#obj[key]}
+                    ${this.#fejlec[key]}
                 </th>
             `
         }
